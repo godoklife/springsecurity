@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+<canvas id="canvas" width="640" height="480"></canvas>
+
+
+<script type="importmap">
+        {
+            "imports":{
+                  "three":"https://unpkg.com/three@0.141.0/build/three.module.js",
+                  "GLTFLoader":"https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js",
+                  "OrbitControls":"https://unpkg.com/three@0.141.0/examples/jsm/controls/OrbitControls.js"
+            }
+        }
+    </script>
+<script type="module">  // 원래 코드는 dog.html참고
+import { GLTFLoader } from 'GLTFLoader';
+import * as THREE from 'three';
+import { OrbitControls } from 'OrbitControls';
+
+let scene = new THREE.Scene();
+let renderer = new THREE.WebGLRenderer({
+    canvas : document.querySelector('#canvas'),
+    antialias : true,
+});
+renderer.outputEncoding = THREE.sRGBEncoding;
+
+
+let camera = new THREE.PerspectiveCamera(45, 1.333, 1, 10000);
+let controls = new OrbitControls( camera, renderer.domElement );
+// camera.position.set(0,20,40);
+camera.position.set(0,0,5);
+
+controls.update();
+
+scene.background = new THREE.Color('white');
+let light = new THREE.DirectionalLight(0xaaaaaa, 1);
+light.position.set(1,1,1);
+scene.add(light);
+
+let loader = new GLTFLoader();
+loader.load('/img/shiba/scene.gltf', function(gltf){
+    scene.add(gltf.scene);
+    function animate(){  // 내가 지정한 속도, 방향으로 회전
+        requestAnimationFrame(animate);
+        gltf.scene.rotation.y-=0.1;    // Y축
+        gltf.scene.rotation.x+=0.01;       // X축
+        //controls.autoRotate=true;
+        controls.enableDamping=true;    // 부드러운 스크롤링
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate()
+});
+
+
+</script>
+
 </body>
 </html>

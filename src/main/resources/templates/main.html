@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<h1> 메인페이지 입니다. </h1>
+<button onclick="location.href='/member/login'">로그인 페이지로</button>
+<button onclick="location.href='/member/signup'">signup 페이지로</button>
+<button onclick="location.href='/member/logout'">로그아웃</button>
+<button onclick="location.href='/memberonly'">MEMBER 전용 페이지</button>
+<button onclick="location.href='/adminonly'">ADMIN 전용 페이지</button>
+
+<div>
+    <p th:text="${#authentication.getName()}">
+    <p th:text="${#authentication.getAuthorities()}">
+</div>
+
 </body>
 </html>

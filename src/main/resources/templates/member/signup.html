@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>회원가입 페이지</title>
 </head>
 <body>
-$END$
+
+<h1> 회원가입 페이지 입니다. </h1>
+<form action="/member/signup-processing" method="post">
+    아이디 : <input type="text" placeholder="아이디입력" name="memberid"><br>
+    비밀번호 : <input type="password" placeholder="패스워드입력" name="memberpassword"><br>
+    닉네임 : <input type="text" placeholder="닉네임입력" name="membernickname"><br>
+    이메일 : <input type="text" placeholder="이메일입력" name="memberemail"><br>
+    <input type="submit" value="회원가입">
+    <input type="reset" value="리셋">
+</form>
+
 </body>
 </html>
