@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/memberonly").hasRole("MEMBER")   // 해당 페이지의 접근 권한 지정
-                .antMatchers("/adminonly").hasRole("Admin")     // 상동
+                .antMatchers("/adminonly").hasRole("ADMIN")     // 상동
                 .antMatchers("/**").permitAll()          // 그 외 경로는 모든 권한의 접근 허용()
                 .and()                                              // 그리고
                 .formLogin()                                        // 로그인 명령어 입력 시작
