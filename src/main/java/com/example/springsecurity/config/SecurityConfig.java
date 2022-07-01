@@ -39,7 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/member/signup-processing")   // 상동
                 .and()
                 .exceptionHandling()                                // 예외 발생시 명령어 입력 시작
-                .accessDeniedPage("/error");           // 예외 발생시 이동 페이지 지정 -> 타임리프와 연계
+                .accessDeniedPage("/error")             // 예외 발생시 이동 페이지 지정 -> 타임리프와 연계
+                .and()
+                .oauth2Login()                                      // Oauth2 명령어 입력 시작
+                .userInfoEndpoint()                                 // 사용자 정보가 들어오는 위치
+                .userService(memberService);                        // OAuth2UserService 를 구현한 class 지정
 
 
     }

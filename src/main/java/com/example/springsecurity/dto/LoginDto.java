@@ -63,6 +63,10 @@ public class LoginDto implements UserDetails {
         this.memberpassword = memberEntity.getMemberpassword();
         this.authorities = Collections.unmodifiableSet(new LinkedHashSet<>(authorities));
             // 현 코드가 LoginDto의 private final Set<GrantedAuthority> authorities; <-- 초기화를 시킴.
+        System.out.println(this.memberid);
+        System.out.println(this.memberpassword);
+        System.out.println(this.authorities);
+
     }
 
 }
